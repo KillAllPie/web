@@ -1,0 +1,33 @@
+extends layout
+
+block content
+	.row.row-cols-1.row-cols-sm-1.row-cols-md-2.row-cols-lg-3
+		each item in arr
+			.mb-3
+				.card.h-100
+					.d-flex.align-items-center.justify-content-center.p-2
+						img.img-fluid.card-img-top(src=`/images/${item.img}` alt="img" style="width:auto; max-height:300px;")
+					.card-body.bg-light
+						h6.card-title= item.title
+					.card-footer
+						.row.align-items-center
+							span.card-text.col-6.my-0= item.price + " p."
+							a.btn.btn-primary.product.col-6(onclick="addToCart(this.getAttribute('data-id'))" data-id=item.id) Add to cart
+	.row
+		nav
+			ul.pagination.justify-content-center
+				li.page-item#pagination-back
+					a.page-link
+						span &laquo;
+				li.page-item#pagination-1
+					a.page-link
+				li.page-item#pagination-2
+					a.page-link
+				li.page-item#pagination-3
+					a.page-link
+				li.page-item#pagination-forward
+					a.page-link(href=pageCount)
+						span &raquo;
+
+block scripts
+	script(src="/javascripts/pagination.js")

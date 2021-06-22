@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    if cart.length != 0
+        each item in cart
+            .col-12(id="item-" + item.id)
+                .card.mb-3.h-100
+                    .row.g-0
+                        .col-3
+                            .d-flex.align-items-center.justify-content-center.p-2
+                                img.img-fluid.rounded(src= "images/" + item.img alt="image" style='width:auto; max-height: 200px')
+                        .col-md-9
+                            .card-body
+                                h5.card-title=item.title
+                                h6= item.price + ' p.'
+                                .btn-toolbar.align-items-space-between
+                                    .input-group
+                                        button.btn.btn-outline-gray-400(type="button" id="button-remove") -
+                                        input.form-control(type="number" placeholder="Amount" value=item.amount)
+                                        button.btn.btn-outline-gray-400(type="button" id="button-add") +
+                                    button.btn.btn-danger.ms-3(onclick="removeItem(" + item.id + ")") Remove
+        .d-flex.col-12.align-items-center.justify-content-end
+            h6.me-2.align-middle= 'Total: ' + totalPrice + ' p.'
+            button.btn.btn-success.mb-2#submitOrder(onclick="submitOrder()") Submit order
+    else
+        h5.text-dark.mx-auto Cart is empty            

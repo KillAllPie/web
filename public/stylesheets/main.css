@@ -1,0 +1,15 @@
+.footer .container {
+	max-width: 50%;
+	width: auto;
+}
+
+nav {
+	border-top-left-radius: 0!important;
+	border-top-right-radius: 0!important;
+	border-bottom-left-radius: 25px!important;
+	border-bottom-right-radius: 25px!important;
+}
+
+.btn-outline-gray-400 {
+	border: 1px solid #ced4da!important;
+}

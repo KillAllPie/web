@@ -1,0 +1,19 @@
+.card.me-2
+	ul.list-group.list-group-flush
+			if !user.loggedIn
+				li.list-group-item#auth
+					form(action="/login" method="POST")#auth-login
+						.mb-2
+							label(for="email").form-label Email: 
+							input(type="email" id="email" placeholder="name@example.com" name="email" required).form-control
+						.mb-2
+							label(for="password").form-label Password: 
+							input(type="password" id="password" name="password" required).form-control
+						.btn-group(role="group").w-100
+							input(type="submit" value="Login").btn.btn-secondary.border-end
+							button(onclick="changeAuthForm()").btn.btn-secondary.mx-auto#auth-switch Register
+			else
+				li.list-group-item 
+					h4.d-block.mx-auto.text-dark= user.firstname + " " + user.lastname 
+				a(href="/orders").list-group-item.list-group-item-action Orders 
+				a(href="/logout").list-group-item.list-group-item-action Logout

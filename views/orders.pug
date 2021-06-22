@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    if orders.length == 0
+        .container-fluid.d-flex.justify-content-center.mt-5
+            h5.text-dark No Orders
+    else
+        for order in orders 
+            .row.card.mb-3
+                    ul.list-group.p-0
+                        for orderItem in order.items
+                            li.list-group-item.border-0.border-bottom(style='max-height:170px;')
+                                .d-flex.align-items-center.justify-content-between
+                                    .d-flex.align-items-center.justify-content-center.py-2.col-2
+                                        img.img-fluid(src=`/images/${orderItem.item.img}` style='width:auto; max-height:130px')
+                                    h4.text-dark.col-8.text-start.ms-2=orderItem.item.title
+                                    h5.text-dark.col-2.text-end=orderItem.item.price + ' p.'
+                        .card-footer.justify-content-end.d-flex.border-top-0
+                            h6.float-right= order.totalPrice + ' p.'
